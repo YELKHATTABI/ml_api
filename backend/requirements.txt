@@ -1,0 +1,9 @@
+openvino
+config==0.5.1
+fastapi==0.74.1
+matplotlib==3.5.1
+numpy
+opencv_python
+Pillow
+uvicorn
+python-multipart
