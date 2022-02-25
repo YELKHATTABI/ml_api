@@ -36,8 +36,9 @@ if st.sidebar.button(
         files = {"file": image.getvalue()}
         res = requests.post(f"http://backend:8080/predict", files=files)
         paths = res.json()
-else:
-    st.header("Segmented image will be displayed here")
+    else:
+        st.sidebar.warning("you need to upload an image first!")
+
 
 if res is not None:
     overlay = Image.open(paths.get("overlay_name"))
@@ -49,3 +50,5 @@ if res is not None:
     st.sidebar.header("Mask colors legends")
     legend = Image.open(paths.get("legend_name"))
     st.sidebar.image(legend, width=200)
+else:
+    st.header("Segmented image will be displayed here")    
