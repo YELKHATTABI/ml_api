@@ -1,5 +1,37 @@
 # API for Urban Semantic Segmentation
 
+## Model description 
+
+Reference : https://docs.openvino.ai/2019_R1/_semantic_segmentation_adas_0001_description_semantic_segmentation_adas_0001.html
+
+The model is a pretrained segmentation model that outputs a mask of size `H=1024, W=2048` with integers of values in `[0, ..., 19]` that represents the following classes :
+
+0. road
+1. sidewalk
+2. building
+3. wall
+4. fence
+5. pole
+6. traffic light
+7. traffic sign
+8. vegetation
+9. terrain
+10. sky
+11. person
+12. rider
+13. car
+14. truck
+15. bus
+16. train
+17. motorcycle
+18. bicycle
+19. ego-vehicle
+
+## Openvino 
+https://docs.openvino.ai/latest/index.html
+
+Openvino is a library developped by intel to optimize deeplearning computations on intel CPU and other equipement. For this application, openvino inference engine, as well and optimized segmentation model, where used to make the up lighteweighted and usable on any machine with intel x86 cpu architecture
+
 ## Preprequisite
 
 Make sure you have a modern version of `docker` (>1.13.0) and `docker-compose` installed.
