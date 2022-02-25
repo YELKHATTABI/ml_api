@@ -24,7 +24,7 @@ else:
 if st.sidebar.button("Predict",help="Click on this button to run segmentation model on the uploaded image"):
     if image is not None :
         files = {"file": image.getvalue()}
-        res = requests.post(f"http://127.0.0.1:8000/predict",files=files)
+        res = requests.post(f"http://backend:8080/predict",files=files)
         paths = res.json()
 else : 
     st.header("Segmented image will be displayed here")

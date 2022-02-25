@@ -2,7 +2,8 @@ import uuid
 import cv2
 import uvicorn
 from fastapi import File
-from fastapi import FastAPI
+from fastapi import FastAPI,HTTPException
+from fastapi.testclient import TestClient
 from fastapi import UploadFile
 import numpy as np
 from PIL import Image
@@ -16,10 +17,8 @@ app = FastAPI()
 model = Model("semantic-segmentation-adas-0001")
 model.initialize_vino_model()
 
-
-legend_name = "../frontend/legend.png"
+legend_name = "/storage/legend.png"
 cv2.imwrite(legend_name, generate_legend(CLASSES)[..., ::-1])
-
 
 @app.get("/")
 def read_root():
@@ -29,12 +28,14 @@ def read_root():
 # post end point to receive image from frontend and send back predictions paths
 @app.post("/predict")
 def get_image(file: UploadFile = File(...)):
-    image = np.array(Image.open(file.file))
+    if file.content_type not in ['image/png','image/jpeg','image/webp','image/bmp','image/tiff']:
+        raise HTTPException(400, detail=f"File type of {file.content_type} is not supported")
+    image = np.array(Image.open(file.file).convert("RGB"))
     raw_mask = model.predict(image)
     mask, overlay = generate_images_from_mask(image, raw_mask, CLASSES)
     str_uuid = str(uuid.uuid4())
-    mask_name = f"../frontend/{str_uuid}_mask.png"
-    overlay_name = f"../frontend/{str_uuid}_overlay.png"
+    mask_name = f"/storage/{str_uuid}_mask.png"
+    overlay_name = f"/storage/{str_uuid}_overlay.png"
     cv2.imwrite(mask_name, mask[..., ::-1])
     cv2.imwrite(overlay_name, overlay[..., ::-1])
     return {
