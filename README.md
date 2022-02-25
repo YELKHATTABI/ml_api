@@ -32,6 +32,9 @@ https://docs.openvino.ai/latest/index.html
 
 Openvino is a library developped by intel to optimize deeplearning computations on intel CPU and other equipement. For this application, openvino inference engine, as well and optimized segmentation model, where used to make the up lighteweighted and usable on any machine with intel x86 cpu architecture
 
+Used weights are downloadable from here : https://download.01.org/opencv/2021/openvinotoolkit/2021.1/open_model_zoo/models_bin/1/semantic-segmentation-adas-0001/FP32/
+ 
+
 ## Preprequisite
 
 Make sure you have a modern version of `docker` (>1.13.0) and `docker-compose` installed.
