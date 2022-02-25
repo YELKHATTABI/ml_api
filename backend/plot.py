@@ -2,7 +2,7 @@
 script containing helper functions to display correcly segmentation model predicitons
 """
 import cv2
-from typing import Tuple, Dict
+from typing import Tuple
 import numpy as np
 
 # Constant variable used for plotting mask with colors
