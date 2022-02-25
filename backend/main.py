@@ -2,7 +2,6 @@ import uuid
 import cv2
 import uvicorn
 from fastapi import File
-from fastapi.testclient import TestClient
 from fastapi import UploadFile
 import numpy as np
 from PIL import Image
