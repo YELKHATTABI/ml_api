@@ -1,8 +1,7 @@
 import uuid
 import cv2
 import uvicorn
-from fastapi import File
-from fastapi import UploadFile
+from fastapi import FastAPI, File, UploadFile
 import numpy as np
 from PIL import Image
 from semantic_segmentation_model import Model
