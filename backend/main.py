@@ -28,8 +28,7 @@ def read_root():
 # post end point to receive image from frontend and send back predictions paths
 @app.post("/predict")
 def get_image(file: UploadFile = File(...)):
-    if file.content_type not in ['image/png','image/jpeg','image/webp','image/bmp','image/tiff']:
-        raise HTTPException(400, detail=f"File type of {file.content_type} is not supported")
+    
     image = np.array(Image.open(file.file).convert("RGB"))
     raw_mask = model.predict(image)
     mask, overlay = generate_images_from_mask(image, raw_mask, CLASSES)
