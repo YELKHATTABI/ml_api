@@ -17,6 +17,7 @@ model.initialize_vino_model()
 legend_name = "/storage/legend.png"
 cv2.imwrite(legend_name, generate_legend(CLASSES)[..., ::-1])
 
+
 @app.get("/")
 def read_root():
     return {"message": "Welcome from the API"}
@@ -25,7 +26,7 @@ def read_root():
 # post end point to receive image from frontend and send back predictions paths
 @app.post("/predict")
 def get_image(file: UploadFile = File(...)):
-    
+
     image = np.array(Image.open(file.file).convert("RGB"))
     raw_mask = model.predict(image)
     mask, overlay = generate_images_from_mask(image, raw_mask, CLASSES)
