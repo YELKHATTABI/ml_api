@@ -50,6 +50,7 @@ Use the sidebar to upload and image
 <img width="1659" alt="image" src="https://user-images.githubusercontent.com/36573471/155708016-a4827352-68e3-453e-8eb8-c472247f9fb4.png">
 once an image is uploaded, it gets displayed for you 
 after that you can click on the button `predict` to run your prediction
-A onverlay of a predicted segmentation mask and 
+A onverlay of a predicted segmentation mask and and the input image
+<img width="1638" alt="image" src="https://user-images.githubusercontent.com/36573471/155710614-45915781-1548-4d9f-961a-a67ce88abb3f.png">
 
 
